@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Tiket Acara — EVT-2026-001</title>
+  <style>
+    body{font-family:system-ui,Arial;margin:0;background:#070a12;color:#eaf0ff}
+    .wrap{max-width:820px;margin:0 auto;padding:22px}
+    .card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:16px;padding:18px}
+    .muted{color:rgba(234,240,255,.72);font-size:13px}
+    input{width:100%;padding:12px;border-radius:12px;border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.06);color:#eaf0ff;outline:none}
+    button{width:100%;padding:12px;border-radius:12px;border:0;background:linear-gradient(135deg,#8aa2ff,#5cf0b7);color:#041018;font-weight:800;cursor:pointer}
+    .grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+    @media(max-width:720px){.grid{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="card">
+      <h1 style="margin:0 0 6px">Nama Acara Kamu</h1>
+      <div class="muted">EVT-2026-001 • 2026-03-10 19:00 • Jakarta</div>
+      <div style="margin-top:12px"><b>Harga:</b> Rp 50.000 / tiket</div>
+      <p class="muted">Isi data di bawah. Setelah klik Bayar, kamu akan diarahkan ke halaman pembayaran Midtrans.</p>
+
+      <!-- GANTI URL INI -->
+      <form method="POST" action="GAS_EXEC_URL">
+        <input type="hidden" name="action" value="checkout">
+        <input type="hidden" name="eventId" value="EVT-2026-001">
+
+        <div class="grid" style="margin-top:10px">
+          <div>
+            <div class="muted" style="margin:0 0 6px">Nama</div>
+            <input name="buyerName" required placeholder="Nama lengkap">
+          </div>
+          <div>
+            <div class="muted" style="margin:0 0 6px">Email</div>
+            <input name="email" type="email" required placeholder="email@domain.com">
+          </div>
+          <div>
+            <div class="muted" style="margin:0 0 6px">WhatsApp</div>
+            <input name="phone" required placeholder="08xxxx">
+          </div>
+          <div>
+            <div class="muted" style="margin:0 0 6px">Jumlah tiket</div>
+            <input name="qty" type="number" min="1" value="1" required>
+          </div>
+        </div>
+
+        <button style="margin-top:14px" type="submit">Bayar Sekarang</button>
+      </form>
+
+      <div class="muted" style="margin-top:12px">
+        Setelah pembayaran sukses, tiket + QR akan dikirim ke email (cek spam).
+      </div>
+      <div class="muted" style="margin-top:12px">© <span id="y"></span> BlesProduction</div>
+    </div>
+  </div>
+  <script>document.getElementById("y").textContent = new Date().getFullYear();</script>
+</body>
+</html>
